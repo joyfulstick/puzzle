@@ -25,9 +25,7 @@ class Board extends Component<{}, State> {
   handleDragStart = (e: MouseEvent, index: number) => {
     const startIndex = index
     this.setState({
-      ...this.state,
       draging: {
-        ...this.state.draging,
         startIndex,
       },
     })
@@ -42,10 +40,8 @@ class Board extends Component<{}, State> {
       enterIndex,
     )
     this.setState({
-      ...this.state,
       pieces: newOrder,
       draging: {
-        ...this.state.draging,
         startIndex: enterIndex,
       },
     })
