@@ -1,9 +1,8 @@
 {
-  "extends": "react-app",
+  "extends": ["react-app", "eslint:recommended"],
   "rules": {
-    "semi": [
-      2,
-      "never"
-    ]
+    "semi": [2, "never"],
+    "object-shorthand": 2,
+    "prefer-destructuring": 2
   }
 }
