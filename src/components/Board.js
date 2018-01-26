@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import Rows from './Rows'
 import { pieces } from '../assets/pieces'
-import { changeOrder } from '../lib/utility'
+import { changeOrder, shuffle } from '../lib/utility'
 
 type State = {
   pieces: {
@@ -16,7 +16,7 @@ type State = {
 
 class Board extends Component<{}, State> {
   state = {
-    pieces,
+    pieces: shuffle(pieces),
     draging: {
       startIndex: -1,
     },
@@ -47,13 +47,30 @@ class Board extends Component<{}, State> {
     })
   }
   render() {
-    this.state.pieces.indexOf(this)
+    const pId = this.state.pieces.map(e => e.id),
+      pIn = pieces.map((e, i) => i)
     return (
-      <Rows
-        dragStart={this.handleDragStart}
-        dragEnter={this.handleDragEnter}
-        pieces={this.state.pieces}
-      />
+      <div>
+        <Rows
+          dragStart={this.handleDragStart}
+          dragEnter={this.handleDragEnter}
+          pieces={this.state.pieces}
+        />
+        {pId.toString() === pIn.toString() && (
+          <p
+            style={{
+              fontSize: '2rem',
+              color: '#3f6',
+              boxShadow: '0 0 4em #6f6',
+              width: '400px',
+              position: 'fixed',
+              top: '160px',
+              background: 'rgba(255,255,255,.9)',
+            }}>
+            You Did It! Congratulations!
+          </p>
+        )}
+      </div>
     )
   }
 }

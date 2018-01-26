@@ -18,3 +18,16 @@ export const importAll = (require: any) => {
     .map(item => (requireObject[item.replace('./', '')] = require(item)))
   return requireObject
 }
+
+export const shuffle = (array: Array<any>) => {
+  let m = array.length,
+    t,
+    i
+  while (m) {
+    i = Math.floor(Math.random() * m--)
+    t = array[m]
+    array[m] = array[i]
+    array[i] = t
+  }
+  return array
+}
