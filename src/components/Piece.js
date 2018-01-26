@@ -18,7 +18,6 @@ const Piece = ({ children, dragStart, dragEnter }: Props) => (
       width: '100px',
       height: '100px',
       display: 'inline-block',
-      margin: '1px',
     }}>
     {children}
   </div>

@@ -15,7 +15,7 @@ const Rows = ({ pieces, dragEnter, dragStart }: Props) => {
   pieces.forEach((piece: any, index) => {
     index % columns === 0 &&
       rows.push(
-        <div key={piece.id}>
+        <div key={piece.id} style={{ height: '100px' }}>
           <Row
             rowIndex={index}
             columns={columns}

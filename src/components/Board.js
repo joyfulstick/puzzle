@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import Rows from './Rows'
 import { pieces } from '../assets/pieces'
-import { changePiecesOrder } from '../lib/utility'
+import { changeOrder } from '../lib/utility'
 
 type State = {
   pieces: {
@@ -34,7 +34,7 @@ class Board extends Component<{}, State> {
   handleDragEnter = (e: MouseEvent, index: number) => {
     const enterIndex = index
     if (this.state.draging.startIndex === index) return
-    const newOrder = changePiecesOrder(
+    const newOrder = changeOrder(
       this.state.pieces,
       this.state.draging.startIndex,
       enterIndex,
