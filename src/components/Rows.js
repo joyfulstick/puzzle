@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Row from './Row'
-import { columns } from '../assets/pieces'
+import { columns, boardSize } from '../assets/pieces'
 
 type Props = {
   pieces: Object[],
@@ -15,7 +15,9 @@ const Rows = ({ pieces, dragEnter, dragStart }: Props) => {
   pieces.forEach((piece: any, index) => {
     index % columns === 0 &&
       rows.push(
-        <div key={piece.id} style={{ height: '100px' }}>
+        <div
+          key={piece.id}
+          style={{ height: '100px', width: `${boardSize}px` }}>
           <Row
             rowIndex={index}
             columns={columns}

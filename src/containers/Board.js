@@ -1,8 +1,8 @@
 // @flow
 
 import React, { Component } from 'react'
-import Rows from './Rows'
-import { pieces } from '../assets/pieces'
+import Rows from '../components/Rows'
+import { pieces, boardSize } from '../assets/pieces'
 import { changeOrder, shuffle } from '../lib/utility'
 
 type State = {
@@ -47,25 +47,31 @@ class Board extends Component<{}, State> {
     })
   }
   render() {
-    const pId = this.state.pieces.map(e => e.id),
-      pIn = pieces.map((e, i) => i)
+    const pieceId = this.state.pieces.map(e => e.id),
+      pieceIndex = pieces.map((e, i) => i)
     return (
-      <div>
+      <div
+        style={{
+          position: 'absolute',
+          left: `calc((100% - ${boardSize}px) / 2`,
+          top: '50px',
+        }}>
         <Rows
           dragStart={this.handleDragStart}
           dragEnter={this.handleDragEnter}
           pieces={this.state.pieces}
         />
-        {pId.toString() === pIn.toString() && (
+        {pieceId.toString() === pieceIndex.toString() && (
           <p
             style={{
               fontSize: '2rem',
               color: '#3f6',
               boxShadow: '0 0 4em #6f6',
-              width: '400px',
+              width: `${boardSize}px`,
               position: 'fixed',
               top: '160px',
               background: 'rgba(255,255,255,.9)',
+              textAlign: 'center',
             }}>
             You Did It! Congratulations!
           </p>
