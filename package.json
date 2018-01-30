@@ -1,5 +1,6 @@
 {
   "name": "puzzle",
+  "homepage": "http://joyfulstick.pl/puzzle/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
