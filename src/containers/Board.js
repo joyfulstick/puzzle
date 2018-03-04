@@ -62,8 +62,9 @@ class Board extends Component<{}, State> {
       <main
         style={{
           position: 'absolute',
-          left: `calc((100% - ${boardSize}px) / 2`,
-          top: '5vh',
+          left: '50%',
+          top: '5%',
+          transform: 'translate(-50%)',
         }}>
         <Rows
           dragStart={this.handleDragStart}
