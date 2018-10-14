@@ -1,11 +1,11 @@
 // @flow
 
-import React, { Component } from 'react'
-import Rows from '../components/Rows'
+import React, { Component, Fragment } from 'react'
+import Rows from './Rows'
 import { pieces, boardSize } from '../assets/pieces'
 import { changeOrder, shuffle } from '../lib/utility'
-import Dropdown from '../components/Dropdown'
-import Button from '../components/Button'
+import Dropdown from './Dropdown'
+import Button from './Button'
 import Preview from '../assets/image/puzzle.jpg'
 
 type State = {
@@ -59,19 +59,22 @@ class Board extends Component<{}, State> {
     const pieceId = this.state.pieces.map(e => e.id),
       pieceIndex = pieces.map((e, i) => i)
     return (
-      <main
-        style={{
-          position: 'absolute',
-          left: '50%',
-          top: '5%',
-          transform: 'translate(-50%)',
-        }}>
-        <Rows
-          dragStart={this.handleDragStart}
-          dragEnter={this.handleDragEnter}
-          pieces={this.state.pieces}
-        />
-        <Button clicked={this.handlePreview}>Preview</Button>
+      <Fragment>
+        <main
+          style={{
+            position: 'absolute',
+            left: '50%',
+            top: '5%',
+            transform: 'translate(-50%)',
+          }}
+        >
+          <Rows
+            dragStart={this.handleDragStart}
+            dragEnter={this.handleDragEnter}
+            pieces={this.state.pieces}
+          />
+          <Button clicked={this.handlePreview}>Preview</Button>
+        </main>
         {this.state.preview && (
           <Dropdown clicked={this.handlePreview}>
             <img
@@ -93,12 +96,13 @@ class Board extends Component<{}, State> {
                 top: '20vh',
                 background: 'rgba(255,255,255,.9)',
                 textAlign: 'center',
-              }}>
+              }}
+            >
               You Did It! Congratulations!
             </p>
           </Dropdown>
         )}
-      </main>
+      </Fragment>
     )
   }
 }
